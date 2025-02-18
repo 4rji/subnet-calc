@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subnetting Learning App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="progress-bar">
+                <div class="progress-icons">
+                    <span class="icon">🌟</span>
+                    <span>5</span>
+                    <span class="icon">🔥</span>
+                    <span>1</span>
+                    <span class="icon">💎</span>
+                    <span>495</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="level-container">
+                <h2>SECTION 1, UNIT 1</h2>
+                <h3>Subnetting Practice</h3>
+                
+                <!-- Add lesson buttons -->
+                <div class="lesson-buttons">
+                    <button class="lesson-btn" onclick="openLesson(1)">
+                        <span class="icon">📚</span>
+                        <span>How to Find Gateway IP</span>
+                    </button>
+                    
+                    <button class="lesson-btn" onclick="openLesson(2)">
+                        <span class="icon">📖</span>
+                        <span>Understanding Broadcast & IP Range</span>
+                    </button>
+                    
+                    <button class="lesson-btn" onclick="openLesson(3)">
+                        <span class="icon">📘</span>
+                        <span>Calculating Usable IPs</span>
+                    </button>
+                </div>
+                
+                <div class="level-buttons">
+                    <button class="level-btn completed" onclick="openQuiz(1)">
+                        <span class="star">⭐</span>
+                        <span>Level 1</span>
+                    </button>
+                    
+                    <button class="level-btn" onclick="openQuiz(2)">
+                        <span class="star">⭐</span>
+                        <span>Level 2</span>
+                    </button>
+
+                    <button class="level-btn" onclick="openQuiz(3)">
+                        <span class="star">⭐</span>
+                        <span>Level 3</span>
+                    </button>
+
+                    <!-- New Quiz Button -->
+                    <button class="level-btn" onclick="openQuiz(4)">
+                        <span class="star">⭐</span>
+                        <span>New Quiz</span>
+                    </button>
+
+                    <!-- Add after the existing level buttons -->
+                    <button class="level-btn" onclick="openBinaryQuiz()">
+                        <span class="star">🔢</span>
+                        <span>Binary Conversion Quiz</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Modal -->
+            <div id="quizModal" class="modal">
+                <div class="modal-content">
+                    <h3>Subnetting Quiz - Level <span id="levelNumber">1</span></h3>
+                    <div class="quiz-progress">
+                        <div class="quiz-progress-fill" style="width: 25%"></div>
+                    </div>
+                    <p>Given IP Address: <span id="givenIP">192.168.1.0/24</span></p>
+                    
+                    <div class="quiz-form">
+                        <div class="input-group">
+                            <label for="gateway">Gateway IP:</label>
+                            <input type="text" id="gateway" placeholder="e.g. 192.168.1.1">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="broadcast">Broadcast IP:</label>
+                            <input type="text" id="broadcast" placeholder="e.g. 192.168.1.255">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="usableIPs">Number of Usable IPs:</label>
+                            <input type="text" id="usableIPs" placeholder="e.g. 254">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="ipRange">IP Range:</label>
+                            <input type="text" id="ipRange" placeholder="e.g. 192.168.1.1 - 192.168.1.254">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="subnetMask">Subnet Mask:</label>
+                            <input type="text" id="subnetMask" placeholder="e.g. 255.255.255.0">
+                        </div>
+                        
+                        <button class="check-btn" onclick="checkAnswers()">Check Answers</button>
+                        <button class="close-btn" onclick="closeQuiz()">
+                            <span>←</span>
+                        </button>
+                    </div>
+                    
+                    <div id="feedback" class="feedback"></div>
+                </div>
+            </div>
+
+            <!-- Add Lesson Modal -->
+            <div id="lessonModal" class="modal">
+                <div class="modal-content lesson-content">
+                    <h3>Lesson <span id="lessonNumber">1</span></h3>
+                    <div id="lessonText" class="lesson-text"></div>
+                    <button class="close-btn" onclick="closeLesson()">
+                        <span>←</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Add new modal for binary quiz -->
+            <div id="binaryQuizModal" class="modal">
+                <div class="modal-content">
+                    <h3>Binary Conversion Quiz</h3>
+                    
+                    <div class="binary-quiz-form">
+                        <div class="binary-section">
+                            <h4>Convert Binary to Decimal</h4>
+                            <div class="input-group">
+                                <label>Binary: <span id="binaryNumber">10000011</span></label>
+                                <input type="text" id="decimalAnswer" placeholder="Enter decimal number">
+                            </div>
+                        </div>
+
+                        <div class="binary-section">
+                            <h4>Convert Decimal to Binary</h4>
+                            <div class="input-group">
+                                <label>Decimal: <span id="decimalNumber">131</span></label>
+                                <input type="text" id="binaryAnswer" placeholder="Enter binary number">
+                            </div>
+                        </div>
+                        
+                        <!-- Nuevo botón para generar números aleatorios -->
+                        <button class="new-numbers-btn" onclick="generateNewNumbers()">
+                            <span class="icon">🔄</span>
+                            New Numbers
+                        </button>
+                        
+                        <button class="check-btn" onclick="checkBinaryAnswers()">Check Answers</button>
+                        <button class="close-btn" onclick="closeBinaryQuiz()">
+                            <span>←</span>
+                        </button>
+                    </div>
+                    
+                    <div id="binaryFeedback" class="feedback"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
