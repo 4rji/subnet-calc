@@ -36,6 +36,7 @@ body {
     position: relative;
     background: none;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .progress-bar {
@@ -517,4 +518,18 @@ h2, h3, h4 {
     background: none;
     padding: 0;
     margin-bottom: 30px;
+}
+
+/* Add this to your existing CSS file */
+.main-title {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    padding: 15px 30px; /* Increased padding for a larger button effect */
+    border-radius: 10px; /* More rounded corners */
+    text-align: center; /* Center the text */
+    font-size: 1.8rem; /* Increased font size */
+    font-weight: bold; /* Bold text */
+    margin: 20px auto; /* Center the title with auto margins */
+    display: inline-block; /* Make it behave like a button */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
 } 
