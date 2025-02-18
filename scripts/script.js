@@ -1,3 +1,5 @@
+console.log("Script loaded successfully!");
+
 let currentLevel = 1;
 const quizData = {
     1: {
